@@ -12,6 +12,8 @@ GRANT ROLE snowflake_demo_owner TO ROLE sysadmin;
 
 GRANT OWNERSHIP ON DATABASE SNOWFLAKE_DEMO_DB TO snowflake_demo_owner;
 
+GRANT USAGE ON WAREHOUSE SNOWFLAKE_DEMO_WH TO ROLE snowflake_demo_owner;
+
 USE ROLE snowflake_demo_owner;
 
 USE DATABASE SNOWFLAKE_DEMO_DB;
