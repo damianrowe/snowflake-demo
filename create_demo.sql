@@ -6,13 +6,14 @@ CREATE OR ALTER WAREHOUSE SNOWFLAKE_DEMO_WH
   AUTO_SUSPEND = 300
   AUTO_RESUME = TRUE;
 
-/*
 CREATE OR REPLACE ROLE snowflake_demo_owner;
 
-!prompt vPassword "Enter password for new user";
+GRANT ROLE snowflake_demo_owner TO ROLE sysadmin;
 
-CREATE OR REPLACE USER snowflake_demo_admin
-  PASSWORD = '&vPassword'
-  DEFAULT ROLE = snowflake_demo_owner
-  DEFAULT WAREHOUSE = SNOWFLAKE_DEMO_WH;
-*/
+GRANT OWNERSHIP ON DATABASE SNOWFLAKE_DEMO_DB TO snowflake_demo_owner;
+
+USE ROLE snowflake_demo_owner;
+
+USE DATABASE SNOWFLAKE_DEMO_DB;
+
+CREATE SCHEMA DEMO_TABLES;
