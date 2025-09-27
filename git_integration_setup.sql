@@ -28,13 +28,13 @@ CREATE OR REPLACE API INTEGRATION snowflake_demo_git_api_integration
     --api_allowed_prefixes = ('https://github.com/damianrowe')
     api_allowed_prefixes = ($vGitAccountURL)
     enabled = true
-    allowed_authentication_secrets = (snowflake_demo_secret);
+    allowed_authentication_secrets = (secrets.snowflake_demo_secret);
 
 -- Git repo connection
 CREATE OR REPLACE GIT REPOSITORY git_repos.snowflake_demo_repo
 API_INTEGRATION = snowflake_demo_git_api_integration
-GIT_CREDENTIALS = snowflake_demo_secret
+GIT_CREDENTIALS = secrets.snowflake_demo_secret
 ORIGIN = $vGitRepo;
 
 -- fetch repo
-ALTER GIT REPOSITORY snowflake_demo_repo FETCH;
+ALTER GIT REPOSITORY git_repos.snowflake_demo_repo FETCH;
